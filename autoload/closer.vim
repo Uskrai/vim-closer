@@ -42,7 +42,6 @@ function! closer#close()
   let indent = matchstr(line, '^\s*')
 
   let closetag = s:get_closing(line)
-  if closetag == '' | return "" | endif
 
   let closetag = closetag . s:use_semicolon(ln)
 
@@ -123,17 +122,17 @@ function! s:get_closing(line)
     if ch == '{'
       let clo = '}' . clo
     elseif ch == '}'
-      if clo[0] != '}' | return '' | endif
+
       let clo = clo[1:]
     elseif ch == '('
       let clo = ')' . clo
     elseif ch == ')'
-      if clo[0] != ')' | return '' | endif
+
       let clo = clo[1:]
     elseif ch == '['
       let clo = ']' . clo
     elseif ch == ']'
-      if clo[0] != ']' | return '' | endif
+
       let clo = clo[1:]
     endif
   endwhile
